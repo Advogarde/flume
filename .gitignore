@@ -3,6 +3,7 @@
 
 # dependencies
 node_modules
+example/yarn.lock
 
 # builds
 build
@@ -25,6 +26,7 @@ example/.docz/.cache
 # Local Netlify folder
 .netlify
 .docz
+dependencygraph.svg
 
 .idea/
 /docs/yarn.lock
