@@ -1,7 +1,7 @@
 .wrapper{
-  background: rgba(190, 14, 14, 0.9);
+  background: rgba(104, 47, 150, 0.9);
   border-radius: 5px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,.4);
+  box-shadow: 0px 4px 8px rgba(223, 203, 24, 0.4);
   position: absolute;
   left: 0px;
   top: 0px;
@@ -15,9 +15,9 @@
   font-size: 13px;
   text-transform: uppercase;
   padding: 5px;
-  background: #100ceb;
+  background: #3ae0a1;
   border-radius: 5px 5px 0px 0px;
   margin: 0px;
   margin-bottom: 3px;
-  border-bottom: 1px solid rgba(0,0,0,.15);
+  border-bottom: 1px solid rgba(238, 10, 162, 0.15);
 }

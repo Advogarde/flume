@@ -14,6 +14,57 @@
 npm install --save flume
 ```
 
+## Structure
+irrelevant folders
+- .github
+  - workflows: just needed to publish flume-package
+- cypress: n-to-n testing
+- dist: compiled project
+- docs: any documents
+- example: example project to test changes in flume without using repository in other project
+
+relevant folders and files
+-src
+  - hooks: react hooks: https://reactjs.org/docs/hooks-intro.html
+  - img: includes image for flume (not very relevant)
+  - components: components for every flume feature e.g.
+      - Node
+      - Connection
+      - ContextMenu: menu that appears when clicking right side
+      - IOPort
+        - uses Connection to draw line
+
+    ```comment
+    each component can use other existing components
+    ```
+  - index
+      - React always starts with the index-file
+      - uses Stage-component
+      - React fragment includes 3 buttons "Log Nodes, Export Nodes, Log Comments"
+  - RootEngine.js
+      - serves as Interpreter
+      - receives config file
+      - special feature: uses class
+  - context.js: https://reactjs.org/docs/context.html
+  - connectionCalculator.js: calculates connection between two Nodes
+  - NodesReducer.js:
+    - consists of a switch-case request
+  - stageReducer.js
+    - consists of a switch-case request
+  - toastsReducer.js
+    - consists of a switch-case request
+  - typeBuilder.js:
+    - is just used by index.js
+
+
+
+## Documentation
+For Documentation, use JSDoc: https://jsdoc.app/about-getting-started.html
+
+## Important Questions
+- Wie schafft es OpenDecision, eine JSON zu interpretieren (vermutlich mit file RootEngine), wenn RootEngine kein zusätzliches File entgegennimmt?
+- Wofür wird Toaster verwendet?
+
 ## Usage
 
 ### Defining your nodes
