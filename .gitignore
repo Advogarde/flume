@@ -25,3 +25,6 @@ example/.docz/.cache
 # Local Netlify folder
 .netlify
 .docz
+
+.idea/
+/docs/yarn.lock
