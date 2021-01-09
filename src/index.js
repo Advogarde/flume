@@ -246,8 +246,10 @@ export let NodeEditor = (
   );
 };
 NodeEditor = React.forwardRef(NodeEditor);
+
 export { FlumeConfig, Controls, Colors } from "./typeBuilders";
 export RootEngine from "./RootEngine";
-export const useRootEngine = (nodes, engine, context) =>
-  Object.keys(nodes).length ? engine.resolveRootNode(nodes, { context }) : {"jkjk": kjkjk};
-
+export const useRootEngine = (nodes, engine, context) => {
+  console.log("Root Engine is invoked");
+  return Object.keys(nodes).length ? engine.resolveRootNode(nodes, { context }) : {"jkjk": kjkjk};
+}
