@@ -29,6 +29,10 @@ class RootEngine {
     }
   };
   getRootNode = nodes => {
+    /**
+     * Die Methode objects.values() gibt ein Array mit den Eigenschaftswerten eines gegebenen Objekts in der selben Reihenfolge wie eine for...in sie geben würde zurück.
+     * Der Unterschied ist dabei, dass eine for-in Schleife zusätzlich die Eigenschaften der Prototype-Kette aufzählt.
+     */
     const roots = Object.values(nodes).filter(n => n.root);
     if (roots.length > 1) {
       throw new Error(
