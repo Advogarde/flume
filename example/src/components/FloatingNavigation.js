@@ -6,6 +6,9 @@ import GearIcon from "../icons/GearIcon";
 import { Portal } from "react-portal";
 
 export default () => {
+  /**
+   * Wie der Name bereits sagt, wird der useState()-Hook zur Verwaltung von komponenten-internen States verwendet. Anders als bei Klassen wird der State nicht mit dem bisherigen State gemerged, , stattdessen werden für die unterschiedlichen Variablen im State übelicherweise mehrere useState()-Aufrufe verwendet.
+   */
   const [menuOpen, setMenuOpen] = React.useState();
 
   const openMenu = () => {

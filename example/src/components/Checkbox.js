@@ -4,6 +4,10 @@ import nanoid from "nanoid";
 export default ({ label, value, onChange }) => {
   const id = React.useRef(nanoid(10));
 
+  /**
+   * className Attribut wird verwendet, um eine CSS-Klasse anzugeben.
+   * 
+   */
   return (
     <div className="checkbox-wrapper">
       <input
