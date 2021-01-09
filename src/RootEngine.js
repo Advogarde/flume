@@ -85,6 +85,10 @@ class RootEngine {
     return outputResult;
   };
   resolveRootNode(nodes, options = {}) {
+    
+    console.log("resolveRootNode function:")
+    console.log(nodes);
+    
     const rootNode = options.rootNodeId
       ? nodes[options.rootNodeId]
       : this.getRootNode(nodes);
@@ -130,14 +134,19 @@ class RootEngine {
         }
       );
       if (options.onlyResolveConnected) {
+        console.log("input values");
+        console.log(inputValues);
         return inputValues;
       } else {
+        console.log("Input values 2")
+        console.log({ ...controlValues, ...inputValues });
         return { ...controlValues, ...inputValues };
       }
     } else {
       console.error(
         "A root node was not found. The Root Engine requires that exactly one node be marked as the root node."
       );
+      console.log("return empty object")
       return {};
     }
   }
