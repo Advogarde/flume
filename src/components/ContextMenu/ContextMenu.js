@@ -63,6 +63,13 @@ const ContextMenu = ({
     };
   }, [testClickOutside, testEscape]);
 
+  /**
+   * Here I explain the useMemo-Hook in React: When you update state in React it is going to re-render the entire component. When one of our dependencies changes, the hook is rendered.
+   * There are two typical use cases for useMemo: The first and easiest case is if you have a very slow function, then wrap it into the useMemo so it doesn't recompute every singel time you render <our component. It only gets executed if you need the value of this function.
+   * The second use case which is a little bit trickier is this idea of refernece equality.
+   * 
+   * 
+   */
   const filteredOptions = React.useMemo(() => {
     if (!filter) return options;
     const lowerFilter = filter.toLowerCase();

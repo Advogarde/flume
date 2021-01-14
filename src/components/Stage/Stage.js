@@ -27,6 +27,9 @@ const Stage = ({
   const dispatchNodes = React.useContext(NodeDispatchContext);
   const wrapper = React.useRef();
   const translateWrapper = React.useRef();
+  /**
+   * useState returns an array with the first element being a value that will persist across renders and the second element being the updater function which will trigger a re-render.
+   */
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [menuCoordinates, setMenuCoordinates] = React.useState({ x: 0, y: 0 });
   const dragData = React.useRef({ x: 0, y: 0 });

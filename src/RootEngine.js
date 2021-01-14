@@ -29,6 +29,11 @@ class RootEngine {
     }
   };
   getRootNode = nodes => {
+    /**
+     * Die Methode objects.values() gibt ein Array mit den Eigenschaftswerten eines gegebenen Objekts in der selben Reihenfolge wie eine for...in sie geben würde zurück.
+     * Der Unterschied ist dabei, dass eine for-in Schleife zusätzlich die Eigenschaften der Prototype-Kette aufzählt.
+     * filter() ist eine high-order Funktion, die auf das Array angewendet wird, das die Funktion Object.values(nodes) zurückliefert.
+     */
     const roots = Object.values(nodes).filter(n => n.root);
     if (roots.length > 1) {
       throw new Error(
@@ -37,6 +42,9 @@ class RootEngine {
     }
     return roots[0];
   };
+  /**
+   * Die Methode Object.entries
+   */
   reduceRootInputs = (inputs, callback) =>
     Object.entries(inputs).reduce((obj, [inputName, connection]) => {
       const input = callback(inputName, connection);
@@ -85,6 +93,10 @@ class RootEngine {
     return outputResult;
   };
   resolveRootNode(nodes, options = {}) {
+    
+    console.log("resolveRootNode function:")
+    console.log(nodes);
+    
     const rootNode = options.rootNodeId
       ? nodes[options.rootNodeId]
       : this.getRootNode(nodes);
@@ -130,14 +142,19 @@ class RootEngine {
         }
       );
       if (options.onlyResolveConnected) {
+        console.log("input values");
+        console.log(inputValues);
         return inputValues;
       } else {
+        console.log("Input values 2")
+        console.log({ ...controlValues, ...inputValues });
         return { ...controlValues, ...inputValues };
       }
     } else {
       console.error(
         "A root node was not found. The Root Engine requires that exactly one node be marked as the root node."
       );
+      console.log("return empty object")
       return {};
     }
   }

@@ -2,6 +2,9 @@ import React from "react";
 import styles from "./Checkbox.css";
 import nanoid from "nanoid/non-secure/index";
 
+/** 
+ * Nano ID is a tiny, secure, URL-friendly, unique string ID generator for JavaScript.
+ */
 const Checkbox = ({ label, data, onChange }) => {
   const id = React.useRef(nanoid(10));
 

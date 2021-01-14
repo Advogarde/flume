@@ -57,6 +57,12 @@ export let NodeEditor = (
   const cache = React.useRef(new Cache());
   const stage = React.useRef();
   const [sideEffectToasts, setSideEffectToasts] = React.useState()
+  /**
+   * Here I'm going to explain the useReducerHook
+   * useReducer gives you a more concrete way to handle complex state.
+   * Plain and simple: It allows functional components in React access to reducer functions from your state management.
+   * The basic setup of the useReducer hook is the following: const [state, dispatch] = useReducer(reducer, initialState);
+   */
   const [toasts, dispatchToasts] = React.useReducer(toastsReducer, []);
   const [nodes, dispatchNodes] = React.useReducer(
     connectNodesReducer(
@@ -93,6 +99,9 @@ export let NodeEditor = (
       .getBoundingClientRect();
   };
 
+  /** 
+   * Ein Effect wird erst nach dem initialen Rendern ausgeführt. Das führt dazu, dass die eigentliche Komponente möglichst schnell angezeigt wird Muss ein Effect doch einmal vor dem initialen Rendern ausgeführt werden, gibt es den useLayoutEffect()-Hook,
+   */
   React.useLayoutEffect(() => {
     if (shouldRecalculateConnections) {
       recalculateConnections();
@@ -136,6 +145,13 @@ export let NodeEditor = (
     }
   }, [sideEffectToasts])
 
+  /**
+   * Hier wird reihenweise Gebrauch der Context API von React gemacht. die entsprechenden Kontexte sind definiert in ./context.js
+   * Wenn wir einen Context definiert haben, müssen wir diesen den Komponenten in unserem Komponentenbaum (component tree) zur Verfügung stellen (providen). Ein Provider wird verwendet, um den entsprechenden Context durch den Baum zu leiten. Jede Komponente kann ihn lesen, ganz egal wie tief sie liegt.
+   * Wie man sieht, stellen die ganzen Context-Provider allen Komponenten die entsprechenden Werte zur Verfügung, die von den Context.Providern umschlossen (gewrappt) werden.
+   * Ein Context.Consumer ist eine React-Komponente, die Context-Veränderungen abonniert hat. Für funktionale Komponenten kann man useContext benutzen. Das ist das Äquivalent zu static contextType
+   * Schön zusammengefasst (im Gegensatz zu vielen anderen Blogs) https://www.taniarascia.com/using-context-api-in-react/
+   */
   return (
     <PortTypesContext.Provider value={portTypes}>
       <NodeTypesContext.Provider value={nodeTypes}>
@@ -230,7 +246,10 @@ export let NodeEditor = (
   );
 };
 NodeEditor = React.forwardRef(NodeEditor);
+
 export { FlumeConfig, Controls, Colors } from "./typeBuilders";
 export RootEngine from "./RootEngine";
-export const useRootEngine = (nodes, engine, context) =>
-  Object.keys(nodes).length ? engine.resolveRootNode(nodes, { context }) : {};
+export const useRootEngine = (nodes, engine, context) => {
+  console.log("Root Engine is invoked");
+  return Object.keys(nodes).length ? engine.resolveRootNode(nodes, { context }) : {"jkjk": kjkjk};
+}

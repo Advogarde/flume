@@ -25,6 +25,14 @@ function useTransputs (transputsFn, transputType, nodeId, inputData, connections
   }, [transputsFn, inputData, connections, executionContext]);
   const prevTransputs = usePrevious(transputs);
 
+  /** 
+   * Um sogenannte Seiten-Effekte zu implementieren, gibt es den useEffect()-Hook. Seiteneffekte sind im Falle von React alles, was nicht unmittelbar das Rendern von UI-Komponenten betrifft, wie z.B. Console-Ausgaben, Netzwerk-Requests, Event-Handler etc.
+   * Die grundlegende Syntax ist folgende: useEffect(callback, dependencyArray)
+   * Der Callback ist der Seiteneffekt, der ausgeführt werden soll. Das Dependency Array kann verschiedene Werte haben: (kein Wert) = Immer ausführen, [] = der Hook wird nur einmal beim Komponenten-Start ausgeführt, [a, b] = Immer, wenn sich eine der Variablen a oder b geändert hat (word per Referenz-Vergleich mittels Object.is() ermittelt), ausführen
+   * Ersatz für Lifecycle-Methoden (componentDidMount, componentDidUpdate, componentWillUnmount) von klasenbasierten Komponenten.
+   * Dient zum Aufruf von Funktionen mit Seiteneffekten. Wird bei jedem Render (auch Updates) ausgeführt.
+   * Wie im Folgenden kann man den useEffect-Hook auch konditional ausführen. Der Hook wird nur ausgeführt, wenn sich Parameter im Array verändern. Gedacht für Effekte, die nur unter gewissen Bedingungen laufen sollen.
+  */
   React.useEffect(() => {
     if (!prevTransputs || Array.isArray(transputsFn)) return;
     for (const transput of prevTransputs) {
@@ -42,6 +50,11 @@ function useTransputs (transputsFn, transputType, nodeId, inputData, connections
   return transputs;
 }
 
+/**
+ * Das ist ein typisches Beispiel einer Funktionskomponente (functional component), die destructuring benutzt. 
+ * Man übergibt der Funktion ein Objekt als Argument und erhält JSX als Rückgabewert, aber durch die Destrukturierung werden nur die namentlich erwähnten Eigenschaften des Objektes benutzt.
+ * Anschließend exportiert man die entsprechende Funktionskomponente, um sie im gesamten Projekt zu verwenden.
+ */
 const IoPorts = ({
   nodeId,
   inputs = [],
